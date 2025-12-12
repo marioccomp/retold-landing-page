@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retold — A galeria definitiva para engenheiros de software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/scripts.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="img/retold.png"
+          alt="Logo Retold"
+          style="
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 8px;
+          "
+        />
+      </div>
+      <button class="cta-button" id="header-cta-btn">Acompanhar</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="hero-card-footer">
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Node.js</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-footer">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">Django</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-footer">
+            <span class="tech-badge">Vue</span>
+            <span class="tech-badge">Firebase</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <h1>
+          Seu currículo conta o passado.<br />Seus projetos mostram o futuro.
+        </h1>
+        <p class="hero-subtitle">
+          Retold é a galeria definitiva para criadores — um espaço onde seus
+          projetos se tornam um portfólio visual vivo, e onde talento é
+          reconhecido pelo que você construiu, não apenas pelo que escreveu.
+        </p>
+      </div>
+    </section>
+
+    <section class="vision-section">
+      <div class="vision-grid">
+        <div class="vision-text">
+          <h2>Um sistema que falha<br />para ambos os lados.</h2>
+          <p>
+            200 currículos, 15 minutos, e um recrutador sem contexto técnico
+            tentando adivinhar quem realmente é bom. Do outro lado, semanas de
+            trabalho transformadas em blocos de texto que quase ninguém lê.
+            Pessoas talentosas passam despercebidas. Empresas contratam errado.
+            Todos perdem.
+          </p>
+        </div>
+        <div class="vision-visual">
+          <div class="chaos-box">
+            <div class="void-text">VAZIO</div>
+            <div class="pdf-mockup">
+              <div class="pdf-title">CURRÍCULO</div>
+              <div class="pdf-line"></div>
+              <div class="pdf-line w-80"></div>
+              <div class="pdf-line w-60"></div>
+            </div>
+            <div class="pdf-mockup">
+              <div class="pdf-title">CURRÍCULO</div>
+              <div class="pdf-line"></div>
+              <div class="pdf-line w-80"></div>
+              <div class="pdf-line w-60"></div>
+            </div>
+            <div class="pdf-mockup">
+              <div class="pdf-title">CURRÍCULO</div>
+              <div class="pdf-line"></div>
+              <div class="pdf-line w-80"></div>
+              <div class="pdf-line w-60"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vision-grid reverse">
+        <div class="vision-text">
+          <h2>Uma vitrine para evidências, não promessas.</h2>
+          <p>
+            Imagine um espaço onde cada projeto seu tem sua própria página
+            visual: capa impactante, fotos e vídeos visíveis, descrição clara,
+            links funcionais.<br /><br />
+            Um layout que fala por você antes da entrevista começar. Seja você
+            um programador, videomaker, designer, historiador ou qualquer
+            profissão, Retold está aqui para você.
+          </p>
+        </div>
+        <div class="vision-visual">
+          <div class="retold-card-mockup">
+            <div class="card-cover">
+              <div class="code-pattern">
+                const app = () => { return ( &lt;Vision /&gt; ); };
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Task Manager 3D</h3>
+              <div class="card-stack">
+                <span class="stack-tag">Three.js</span>
+                <span class="stack-tag">React</span>
+                <span class="stack-tag">Firebase</span>
+              </div>
+              <div class="card-author">
+                <div class="author-avatar"></div>
+                <span>Maria Silva</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ecosystem-section">
+      <div class="ecosystem-container">
+        <div class="ecosystem-intro">
+          <h2>Dois lados. Uma solução.</h2>
+          <p>
+            Transformamos a conversa sobre competência técnica — para quem cria
+            e para quem contrata.
+          </p>
+        </div>
+
+        <div class="ecosystem-grid">
+          <div class="ecosystem-card dev-card">
+            <div class="card-label">Para Desenvolvedores</div>
+            <h3>Pare de otimizar palavras-chave no currículo.</h3>
+            <p>
+              Foque em mostrar o que você realmente sabe fazer. Nós cuidamos de
+              levar o seu trabalho até quem toma decisões.
+            </p>
+            <div class="card-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path
+                  d="M14 18L24 28L34 18"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div class="ecosystem-card company-card">
+            <div class="card-label">Para Empresas</div>
+            <h3>Contrate evidências,<br />não promessas.</h3>
+            <p>
+              Acabe com a triagem de centenas de PDFs genéricos. Tenha acesso a
+              talentos já validados pelos projetos que entregam.
+            </p>
+            <div class="card-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path
+                  d="M24 14L24 34M14 24L34 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="cta-section">
+      <div class="cta-content">
+        <h2>Estamos construindo isso agora.</h2>
+        <p>
+          Se você é um profissional cansado de espalhar seu portfólio por vários
+          sites, ou uma empresa exausta de contratar apenas com base em
+          currículos, deixe seu e-mail. <br /><br />
+
+          Vamos compartilhar cada etapa da construção.
+        </p>
+
+        <div id="form-container">
+          <form class="email-form" id="emailForm">
+            <input
+              type="email"
+              id="emailInput"
+              placeholder="seu@email.com"
+              required
+            />
+            <button type="submit" id="submitBtn">Acompanhar a jornada</button>
+          </form>
+          <!-- <p class="microcopy">Sem spam. Sem funil. Só honestidade.</p> -->
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-logo">
+        <img src="img/retold-footer.png" alt="retold footer logo" />
+      </div>
+      <p>Construído por makers para makers.</p>
+      <p class="location">Retold — 2025 — Rio de Janeiro, BR</p>
+    </footer>
+  </body>
+</html>
