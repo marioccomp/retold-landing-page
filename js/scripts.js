@@ -59,3 +59,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function toggleLike(element) {
+  const counter = element.querySelector("span");
+  // Pega o valor atual (ex: 55)
+  let currentCount = parseInt(counter.innerText);
+
+  if (element.classList.contains("liked")) {
+    element.classList.remove("liked");
+    counter.innerText = currentCount - 1;
+  } else {
+    element.classList.add("liked");
+    counter.innerText = currentCount + 1;
+  }
+}
+
+// --- NOVA FUNÇÃO PARA O TOGGLE DA DESCRIÇÃO ---
+function toggleMobileOverlay(button) {
+  // Encontra o elemento pai com a classe .mockup-overlay
+  const overlay = button.closest(".mockup-overlay");
+  // Alterna a classe 'minimized'
+  overlay.classList.toggle("minimized");
+}

@@ -143,22 +143,95 @@
           </p>
         </div>
         <div class="vision-visual">
-          <div class="retold-card-mockup">
-            <div class="card-cover">
-              <div class="code-pattern">
-                const app = () => { return ( &lt;Vision /&gt; ); };
+          <div class="mockup-container">
+            <div class="mockup-image-wrapper">
+              <img
+                src="img/mockup-analytics.jpg"
+                alt="Dashboard Analytics"
+                class="mockup-bg-image"
+              />
+
+              <div class="mockup-overlay">
+                <button
+                  class="overlay-toggle-btn mobile-only"
+                  onclick="toggleMobileOverlay(this)"
+                  aria-label="Minimizar descrição"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="toggle-icon"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+
+                <div class="overlay-content-wrapper">
+                  <div class="overlay-header">
+                    <div class="overlay-avatar">M</div>
+                    <span class="overlay-username">Mario Junior</span>
+                  </div>
+
+                  <p class="overlay-description">
+                    Aplicação de dashboard analítico para visualização de
+                    métricas de performance, renderização e load time em tempo
+                    real.
+                  </p>
+
+                  <div class="overlay-tags">
+                    <span class="mockup-tag">React</span>
+                    <span class="mockup-tag">Next.js</span>
+                    <span class="mockup-tag">Tremor</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="card-content">
-              <h3 class="card-title">Task Manager 3D</h3>
-              <div class="card-stack">
-                <span class="stack-tag">Three.js</span>
-                <span class="stack-tag">React</span>
-                <span class="stack-tag">Firebase</span>
-              </div>
-              <div class="card-author">
-                <div class="author-avatar"></div>
-                <span>Maria Silva</span>
+
+            <div class="mockup-footer">
+              <h3 class="mockup-title">Analytics Dashboard</h3>
+              <div class="mockup-stats">
+                <div class="stat-item like-button" onclick="toggleLike(this)">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+                    />
+                  </svg>
+                  <span>55</span>
+                </div>
+                <div class="stat-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <span>127</span>
+                </div>
               </div>
             </div>
           </div>

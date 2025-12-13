@@ -313,82 +313,220 @@ header {
 }
 
 /* Solution Visual - Retold Card */
-.retold-card-mockup {
+/* Container principal que dá a forma e a sombra */
+.mockup-container {
   width: 100%;
-  height: 100%;
   background: var(--white);
-  border-radius: 8px;
-  overflow: hidden;
+  border-radius: 12px; /* Borda um pouco mais arredondada */
+  overflow: hidden; /* Garante que nada saia do container */
   box-shadow: 0 24px 64px var(--card-shadow);
-  transition: transform 0.4s ease;
   border: 1px solid rgba(21, 46, 43, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.retold-card-mockup:hover {
+/* Efeito de levantar ao passar o mouse no container todo */
+.mockup-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 32px 80px rgba(21, 46, 43, 0.15);
+}
+
+/* Wrapper para a área da imagem e o overlay */
+.mockup-image-wrapper {
+  position: relative;
+  width: 100%;
+  /* Define uma altura fixa ou máxima para o mockup manter a proporção */
+  height: 320px;
+  overflow: hidden;
+}
+
+/* A imagem de fundo (dashboard) */
+.mockup-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cobre toda a área sem distorcer */
+  display: block;
+}
+
+/* --- O OVERLAY (A mágica acontece aqui) --- */
+.mockup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Fundo escuro semi-transparente usando sua cor dark-green */
+  background: rgba(21, 46, 43, 0.95);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* Inicialmente invisível */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Quando passar o mouse no wrapper, mostra o overlay */
+.mockup-image-wrapper:hover .mockup-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Estilos do conteúdo do Overlay */
+.overlay-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.overlay-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--vibrant-green);
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Estilo da letra */
+  color: var(--dark-green);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.overlay-username {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.overlay-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--light-text);
+  margin-bottom: 28px;
+}
+
+.overlay-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mockup-tag {
+  padding: 8px 16px;
+  background-color: var(--vibrant-green);
+  color: var(--dark-green);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+/* --- RODAPÉ DO MOCKUP (Likes/Views) --- */
+.mockup-footer {
+  padding: 20px 24px;
+  background: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(21, 46, 43, 0.05);
+}
+
+.mockup-title {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark-green);
+  margin: 0;
+}
+
+.mockup-stats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--body-text);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.retold-card-image:hover {
   transform: translateY(-8px);
   box-shadow: 0 32px 80px rgba(21, 46, 43, 0.12);
 }
 
-.card-cover {
-  width: 100%;
-  height: 280px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  position: relative;
-  overflow: hidden;
+/* --- ESTILO DO BOTÃO DE LIKE --- */
+
+.like-button {
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico */
+  user-select: none; /* Impede seleção do texto ao clicar rápido */
 }
 
-.code-pattern {
+/* Hover: Fica levemente vermelho e cresce */
+.like-button:hover {
+  color: #ff4d4d;
+  transform: scale(1.1);
+}
+
+/* Estado Liked (Quando clicado) */
+.like-button.liked {
+  color: #ff4d4d; /* Cor do texto e contorno muda para vermelho */
+}
+
+.like-button.liked svg {
+  fill: #ff4d4d; /* Preenche o coração */
+  stroke: #ff4d4d;
+  animation: heartPop 0.3s ease-in-out; /* Pequena animação de "tum-tum" */
+}
+
+/* Animação do "tum-tum" ao curtir */
+@keyframes heartPop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* --- NOVOS ESTILOS PARA O TOGGLE MOBILE --- */
+
+/* Por padrão (Desktop), o botão não existe */
+.mobile-only {
+  display: none;
+}
+
+/* Estilos base do botão de toggle */
+.overlay-toggle-btn {
   position: absolute;
-  font-family: "Courier New", monospace;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.3);
-  line-height: 1.4;
-  white-space: pre;
-  padding: 20px;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7); /* Branco semi-transparente */
+  cursor: pointer;
+  padding: 8px;
+  z-index: 10; /* Garante que fique sobre o conteúdo */
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.card-content {
-  padding: 28px;
-}
-
-.card-title {
-  font-family: "Playfair Display", serif;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--dark-green);
-}
-
-.card-stack {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
-
-.stack-tag {
-  padding: 6px 12px;
-  background: rgba(5, 220, 127, 0.15);
-  color: var(--vibrant-green);
-  font-size: 13px;
-  border-radius: 4px;
-  font-weight: 500;
-  border: 1px solid rgba(5, 220, 127, 0.2);
-}
-
-.card-author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--body-text);
-  font-size: 14px;
-}
-
-.author-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--vibrant-green);
+.toggle-icon {
+  transition: transform 0.3s ease;
 }
 
 /* Ecosystem Section */
@@ -715,5 +853,77 @@ footer .location {
 
   .footer-logo img {
     height: 48px; /* Um pouco menor no celular */
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .mockup-image-wrapper {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 2. Ajusta a imagem para não esticar demais */
+  .mockup-bg-image {
+    height: 240px; /* Altura fixa apenas para a imagem */
+    position: relative;
+  }
+
+  /* 3. Transforma o Overlay em um bloco fixo visível */
+  .mockup-overlay {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    /* MUDANÇA AQUI: Usando RGBA para transparência (0.9 = 90% opaco) */
+    /* Baseado na sua cor --dark-green (#152e2b) */
+    background: rgba(21, 46, 43, 0.92);
+    padding: 24px;
+    height: auto;
+    top: auto;
+    left: auto;
+    transition: all 0.3s ease;
+  }
+
+  .mockup-overlay.minimized {
+    /* Removemos o padding vertical para ficar fino */
+    padding: 0;
+
+    /* Definimos uma altura fixa e pequena (40px é um bom tamanho para toque) */
+    height: 40px;
+    min-height: 0; /* Remove a altura mínima anterior */
+
+    /* Mantém a transição suave */
+    transition: all 0.3s ease;
+  }
+
+  /* Esconde o conteúdo */
+  .mockup-overlay.minimized .overlay-content-wrapper {
+    display: none;
+  }
+
+  .mockup-overlay.minimized .overlay-toggle-btn {
+    /* Técnica para centralizar verticalmente exato */
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+  }
+
+  /* Gira o ícone da seta para cima */
+  .mockup-overlay.minimized .toggle-icon {
+    transform: rotate(180deg);
+    color: var(--vibrant-green); /* Destaque visual quando minimizado */
+  }
+
+  /* 4. Ajustes finos de texto para mobile */
+  .overlay-description {
+    font-size: 15px; /* Levemente menor para caber melhor */
+    margin-bottom: 20px;
+  }
+
+  .mockup-tag {
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }
