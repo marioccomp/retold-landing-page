@@ -784,80 +784,67 @@ footer .location {
 }
 
 @media (max-width: 768px) {
+  /* --- REGRAS GERAIS MOBILE --- */
   header {
     padding: 20px 24px;
   }
-
-  /* Ajuste para a logo (imagem) no mobile */
   .logo img {
     height: 40px;
   }
-
   .logo-icon.footer-icon {
     font-size: 28px;
   }
-
   .logo-text {
     font-size: 24px;
   }
-
   .hero {
     padding: 100px 24px 60px;
   }
-
   .hero-grid {
     grid-template-columns: 1fr;
     padding: 100px 24px;
   }
-
   .vision-section {
     padding: 80px 24px;
   }
-
   .vision-grid {
     margin-bottom: 80px;
   }
-
   .vision-visual {
     height: 360px;
   }
-
   .ecosystem-section {
     padding: 80px 24px;
   }
-
   .ecosystem-intro {
     margin-bottom: 60px;
   }
-
   .ecosystem-card {
     padding: 40px 32px;
   }
-
   .card-icon {
     bottom: 32px;
     right: 32px;
   }
-
   .cta-section {
     padding: 80px 24px;
   }
-
   .email-form {
     flex-direction: column;
   }
-
   footer {
     padding: 60px 24px;
   }
-
   .footer-logo img {
-    height: 48px; /* Um pouco menor no celular */
+    height: 48px;
   }
 
+  /* Mostra botão apenas no mobile */
   .mobile-only {
     display: block;
   }
+
+  /* --- MOCKUP MOBILE (A CORREÇÃO ESTÁ AQUI) --- */
 
   .mockup-image-wrapper {
     height: auto;
@@ -865,65 +852,77 @@ footer .location {
     flex-direction: column;
   }
 
-  /* 2. Ajusta a imagem para não esticar demais */
   .mockup-bg-image {
-    height: 240px; /* Altura fixa apenas para a imagem */
+    height: 240px;
     position: relative;
   }
 
-  /* 3. Transforma o Overlay em um bloco fixo visível */
+  /* Container do Overlay */
   .mockup-overlay {
     position: relative;
     opacity: 1;
     visibility: visible;
-    /* MUDANÇA AQUI: Usando RGBA para transparência (0.9 = 90% opaco) */
-    /* Baseado na sua cor --dark-green (#152e2b) */
     background: rgba(21, 46, 43, 0.92);
     padding: 24px;
     height: auto;
+    min-height: 40px;
     top: auto;
     left: auto;
-    transition: all 0.3s ease;
+    /* Animação suave da caixa verde */
+    transition: padding 0.3s ease, background-color 0.3s ease;
   }
 
+  /* WRAPPER DO CONTEÚDO (Onde a mágica acontece) */
+  .overlay-content-wrapper {
+    max-height: 500px; /* Altura máxima quando aberto */
+    opacity: 1;
+    overflow: hidden; /* IMPORTANTE: Corta o que sobrar */
+
+    /* Quando ABRIR: Altura demora 0.4s, Opacidade espera um pouco e aparece em 0.3s */
+    transition: max-height 0.4s ease, opacity 0.3s ease 0.1s;
+  }
+
+  /* --- ESTADO MINIMIZADO --- */
   .mockup-overlay.minimized {
-    /* Removemos o padding vertical para ficar fino */
-    padding: 0;
-
-    /* Definimos uma altura fixa e pequena (40px é um bom tamanho para toque) */
-    height: 40px;
-    min-height: 0; /* Remove a altura mínima anterior */
-
-    /* Mantém a transição suave */
-    transition: all 0.3s ease;
+    padding: 0 24px; /* Remove padding vertical */
+    height: 40px; /* Trava altura da barra */
   }
 
-  /* Esconde o conteúdo */
+  /* Quando MINIMIZAR: Conteúdo some RÁPIDO (0.1s) para não atropelar a caixa encolhendo */
   .mockup-overlay.minimized .overlay-content-wrapper {
-    display: none;
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+
+    /* A mudança aqui: Opacidade some quase instantaneamente */
+    transition: opacity 0.1s ease, max-height 0.4s ease;
   }
 
+  /* Centralização da seta */
   .mockup-overlay.minimized .overlay-toggle-btn {
-    /* Técnica para centralizar verticalmente exato */
     top: 50%;
     transform: translateY(-50%);
     right: 12px;
   }
 
-  /* Gira o ícone da seta para cima */
+  /* Rotação do ícone */
   .mockup-overlay.minimized .toggle-icon {
     transform: rotate(180deg);
-    color: var(--vibrant-green); /* Destaque visual quando minimizado */
+    color: var(--vibrant-green);
   }
 
-  /* 4. Ajustes finos de texto para mobile */
+  /* Ajustes de fonte */
   .overlay-description {
-    font-size: 15px; /* Levemente menor para caber melhor */
+    font-size: 15px;
     margin-bottom: 20px;
   }
 
   .mockup-tag {
     font-size: 12px;
     padding: 6px 12px;
+  }
+
+  .overlay-toggle-btn {
+    transition: top 0.4s ease, transform 0.4s ease, color 0.3s ease;
   }
 }
