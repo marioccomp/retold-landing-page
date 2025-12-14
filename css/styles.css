@@ -619,14 +619,6 @@ header {
   color: var(--body-text);
 }
 
-.card-icon {
-  position: absolute;
-  bottom: 48px;
-  right: 48px;
-  opacity: 0.1;
-  color: var(--dark-green);
-}
-
 /* CTA Section (Dark Theme) */
 .cta-section {
   padding: 120px 48px;
@@ -761,8 +753,158 @@ footer .location {
   color: var(--secondary-text);
 }
 
-/* Responsive */
+/* --- ESTILOS DO CARROSSEL (VISUAL SHOWCASE - DESKTOP) --- */
+
+/* Ajuste no container pai */
+.vision-visual.carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  transform: translateX(-80px); /* Ajuste de alinhamento Desktop */
+}
+
+/* O palco que segura os 3 cards */
+.carousel-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Container do Mockup */
+.carousel-stage .mockup-container {
+  width: 420px;
+  flex-shrink: 0;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease,
+    filter 1s ease, box-shadow 1s ease;
+  will-change: transform, opacity;
+}
+
+/* --- ESTADOS DOS CARDS (DESKTOP) --- */
+
+.active-card {
+  transform: scale(1) translateZ(0);
+  opacity: 1;
+  z-index: 10;
+  box-shadow: 0 32px 80px rgba(21, 46, 43, 0.18);
+  filter: blur(0);
+}
+
+.side-card {
+  transform: scale(0.95) translateZ(-20px);
+  opacity: 0.8;
+  filter: blur(1px);
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  box-shadow: 0 10px 30px rgba(21, 46, 43, 0.05);
+}
+
+/* --- FADE NAS LATERAIS --- */
+.carousel-fade-left,
+.carousel-fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.carousel-fade-left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--white) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.carousel-fade-right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--white) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* --- SETAS DE NAVEGAÇÃO --- */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  background-color: var(--white);
+  border: 1px solid rgba(21, 46, 43, 0.1);
+  color: var(--dark-green);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--card-shadow);
+}
+
+.carousel-arrow:hover {
+  background-color: var(--vibrant-green);
+  border-color: var(--vibrant-green);
+  color: var(--dark-green);
+  box-shadow: 0 8px 24px rgba(5, 220, 127, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.arrow-left {
+  left: 24px;
+}
+
+.arrow-right {
+  right: 24px;
+}
+
+/* --- BOLINHAS (INDICADORES) --- */
+.carousel-indicators {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 30;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(21, 46, 43, 0.2);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.indicator-dot.active {
+  background-color: var(--vibrant-green);
+  transform: scale(1.3);
+  box-shadow: 0 0 12px rgba(5, 220, 127, 0.4);
+}
+
+/* ========================================= */
+/* RESPONSIVIDADE (MEDIA QUERIES)      */
+/* ========================================= */
+
 @media (max-width: 1024px) {
+  /* Ajustes para Tablet/Laptop menor */
+
   .hero-grid {
     grid-template-columns: repeat(2, 1fr);
     opacity: 0.1;
@@ -781,6 +923,16 @@ footer .location {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+
+  /* Reset do alinhamento do carrossel para telas menores */
+  .vision-visual.carousel-wrapper {
+    transform: none;
+  }
+
+  /* Cards um pouco menores no tablet */
+  .carousel-stage .mockup-container {
+    width: 340px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -790,9 +942,6 @@ footer .location {
   }
   .logo img {
     height: 40px;
-  }
-  .logo-icon.footer-icon {
-    font-size: 28px;
   }
   .logo-text {
     font-size: 24px;
@@ -838,26 +987,30 @@ footer .location {
   .footer-logo img {
     height: 48px;
   }
-
-  /* Mostra botão apenas no mobile */
   .mobile-only {
     display: block;
   }
 
-  /* --- MOCKUP MOBILE (A CORREÇÃO ESTÁ AQUI) --- */
-
+  /* --- MOCKUP MOBILE (Overlay) --- */
   .mockup-image-wrapper {
     height: auto;
     display: flex;
     flex-direction: column;
   }
-
   .mockup-bg-image {
+    /* Define uma altura fixa para que todos os cards fiquem iguais */
     height: 240px;
+    width: 100%;
+
+    /* Preenche o espaço sem deformar a imagem */
+    object-fit: cover;
+
+    /* O SEGREDO: Garante que o TOPO do site (header) sempre apareça */
+    /* Corta apenas o rodapé se a imagem for muito comprida */
+    object-position: top center;
+
     position: relative;
   }
-
-  /* Container do Overlay */
   .mockup-overlay {
     position: relative;
     opacity: 1;
@@ -865,64 +1018,129 @@ footer .location {
     background: rgba(21, 46, 43, 0.92);
     padding: 24px;
     height: auto;
-    min-height: 40px;
+    min-height: 56px; /* Altura quando aberto */
     top: auto;
     left: auto;
-    /* Animação suave da caixa verde */
-    transition: padding 0.3s ease, background-color 0.3s ease;
+    /* Adicionei 'min-height' e 'height' na transição abaixo */
+    transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      min-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-
-  /* WRAPPER DO CONTEÚDO (Onde a mágica acontece) */
   .overlay-content-wrapper {
-    max-height: 500px; /* Altura máxima quando aberto */
+    max-height: 200px;
     opacity: 1;
-    overflow: hidden; /* IMPORTANTE: Corta o que sobrar */
-
-    /* Quando ABRIR: Altura demora 0.4s, Opacidade espera um pouco e aparece em 0.3s */
-    transition: max-height 0.4s ease, opacity 0.3s ease 0.1s;
+    overflow: hidden;
+    margin-top: 0;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease 0.1s;
   }
-
-  /* --- ESTADO MINIMIZADO --- */
   .mockup-overlay.minimized {
-    padding: 0 24px; /* Remove padding vertical */
-    height: 40px; /* Trava altura da barra */
+    padding: 0 24px;
+    min-height: 32px; /* Diminuído de 56px para 32px */
+    height: 32px; /* Força a altura exata */
   }
-
-  /* Quando MINIMIZAR: Conteúdo some RÁPIDO (0.1s) para não atropelar a caixa encolhendo */
   .mockup-overlay.minimized .overlay-content-wrapper {
     max-height: 0;
     opacity: 0;
     margin: 0;
-
-    /* A mudança aqui: Opacidade some quase instantaneamente */
-    transition: opacity 0.1s ease, max-height 0.4s ease;
+    transition: opacity 0.1s ease, max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-
-  /* Centralização da seta */
   .mockup-overlay.minimized .overlay-toggle-btn {
     top: 50%;
     transform: translateY(-50%);
     right: 12px;
   }
-
-  /* Rotação do ícone */
   .mockup-overlay.minimized .toggle-icon {
     transform: rotate(180deg);
     color: var(--vibrant-green);
   }
-
-  /* Ajustes de fonte */
   .overlay-description {
     font-size: 15px;
     margin-bottom: 20px;
   }
-
   .mockup-tag {
     font-size: 12px;
     padding: 6px 12px;
   }
-
   .overlay-toggle-btn {
-    transition: top 0.4s ease, transform 0.4s ease, color 0.3s ease;
+    transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s ease,
+      color 0.3s ease;
+  }
+
+  /* --- CARROSSEL MOBILE --- */
+
+  .vision-visual.carousel-wrapper {
+    min-height: auto;
+    padding: 40px 0;
+    overflow: hidden; /* Trava o scroll de dedo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: none;
+    perspective: 1000px;
+  }
+
+  .carousel-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px; /* Espaço entre os cards */
+    width: 100%;
+    /* Permite que o JS mova o palco suavemente */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .carousel-stage .mockup-container {
+    /* 75vw = Deixa espaço nas laterais para ver os vizinhos */
+    width: 70vw;
+    flex-shrink: 0;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
+  }
+
+  /* --- SETAS DE NAVEGAÇÃO (VOLTARAM) --- */
+  .carousel-arrow {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(21, 46, 43, 0.1);
+    box-shadow: 0 4px 12px rgba(21, 46, 43, 0.1);
+  }
+  .arrow-left {
+    left: 8px;
+  }
+  .arrow-right {
+    right: 8px;
+  }
+
+  /* --- EFEITOS VISUAIS PARA PROFUNDIDADE --- */
+
+  /* Card Central: Grande e Opaco */
+  .active-card {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0 20px 50px rgba(21, 46, 43, 0.15);
+  }
+
+  /* Cards Laterais: Menores e Transparentes */
+  .side-card {
+    transform: scale(
+      0.95
+    ); /* Diminui visualmente para parecer que está atrás */
+    opacity: 0.5; /* Deixa meio apagado */
+    filter: none;
+    pointer-events: none;
+  }
+
+  /* Removemos elementos desnecessários */
+  .carousel-fade-left,
+  .carousel-fade-right,
+  .carousel-indicators {
+    display: none;
   }
 }

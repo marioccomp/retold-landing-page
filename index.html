@@ -138,102 +138,313 @@
             visual: capa impactante, fotos e vídeos visíveis, descrição clara,
             links funcionais.<br /><br />
             Um layout que fala por você antes da entrevista começar. Seja você
-            um programador, videomaker, designer, historiador ou qualquer
+            um programador, videomaker, designer, escritor ou qualquer outra
             profissão, Retold está aqui para você.
           </p>
         </div>
-        <div class="vision-visual">
-          <div class="mockup-container">
-            <div class="mockup-image-wrapper">
-              <img
-                src="img/mockup-analytics.jpg"
-                alt="Dashboard Analytics"
-                class="mockup-bg-image"
-              />
+        <div class="vision-visual carousel-wrapper">
+          <button
+            class="carousel-arrow arrow-left"
+            id="prevBtn"
+            aria-label="Projeto Anterior"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
 
-              <div class="mockup-overlay">
-                <button
-                  class="overlay-toggle-btn mobile-only"
-                  onclick="toggleMobileOverlay(this)"
-                  aria-label="Minimizar descrição"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="toggle-icon"
+          <div class="carousel-stage" id="carouselStage">
+            <div class="mockup-container side-card" data-index="0">
+              <div class="mockup-image-wrapper">
+                <img
+                  src="img/mockup-ecommerce.jpg"
+                  alt="E-commerce Platform"
+                  class="mockup-bg-image"
+                />
+                <div class="mockup-overlay">
+                  <button
+                    class="overlay-toggle-btn mobile-only"
+                    onclick="toggleMobileOverlay(this)"
                   >
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                <div class="overlay-content-wrapper">
-                  <div class="overlay-header">
-                    <div class="overlay-avatar">M</div>
-                    <span class="overlay-username">Mario Junior</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="toggle-icon"
+                    >
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <div class="overlay-content-wrapper">
+                    <div class="overlay-header">
+                      <div class="overlay-avatar">S</div>
+                      <span class="overlay-username">Lucas Santiago</span>
+                    </div>
+                    <p class="overlay-description">
+                      Plataforma SaaS white-label para criação de lojas virtuais
+                      em minutos.
+                    </p>
+                    <div class="overlay-tags">
+                      <span class="mockup-tag">Vue.js</span>
+                      <span class="mockup-tag">Node</span>
+                    </div>
                   </div>
-
-                  <p class="overlay-description">
-                    Aplicação de dashboard analítico para visualização de
-                    métricas de performance, renderização e load time em tempo
-                    real.
-                  </p>
-
-                  <div class="overlay-tags">
-                    <span class="mockup-tag">React</span>
-                    <span class="mockup-tag">Next.js</span>
-                    <span class="mockup-tag">Tremor</span>
+                </div>
+              </div>
+              <div class="mockup-footer">
+                <h3 class="mockup-title">Dukaan Clone</h3>
+                <div class="mockup-stats">
+                  <div class="stat-item like-button" onclick="toggleLike(this)">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+                      />
+                    </svg>
+                    <span>84</span>
+                  </div>
+                  <div class="stat-item">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    <span>342</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="mockup-footer">
-              <h3 class="mockup-title">Analytics Dashboard</h3>
-              <div class="mockup-stats">
-                <div class="stat-item like-button" onclick="toggleLike(this)">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+            <div class="mockup-container active-card" data-index="1">
+              <div class="mockup-image-wrapper">
+                <img
+                  src="img/mockup-analytics.jpg"
+                  alt="Dashboard Analytics"
+                  class="mockup-bg-image"
+                />
+                <div class="mockup-overlay">
+                  <button
+                    class="overlay-toggle-btn mobile-only"
+                    onclick="toggleMobileOverlay(this)"
                   >
-                    <path
-                      d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
-                    />
-                  </svg>
-                  <span>55</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="toggle-icon"
+                    >
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <div class="overlay-content-wrapper">
+                    <div class="overlay-header">
+                      <div class="overlay-avatar">M</div>
+                      <span class="overlay-username">Mario Junior</span>
+                    </div>
+                    <p class="overlay-description">
+                      Dashboard analítico para visualização de métricas em tempo
+                      real.
+                    </p>
+                    <div class="overlay-tags">
+                      <span class="mockup-tag">React</span>
+                      <span class="mockup-tag">Next.js</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="stat-item">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                  <span>127</span>
+              </div>
+              <div class="mockup-footer">
+                <h3 class="mockup-title">Analytics Dashboard</h3>
+                <div class="mockup-stats">
+                  <div class="stat-item like-button" onclick="toggleLike(this)">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+                      />
+                    </svg>
+                    <span>55</span>
+                  </div>
+                  <div class="stat-item">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    <span>127</span>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <div class="mockup-container side-card" data-index="2">
+              <div class="mockup-image-wrapper">
+                <img
+                  src="img/mockup-mobileapp.jpg"
+                  alt="Mobile Handbook App"
+                  class="mockup-bg-image"
+                />
+                <div class="mockup-overlay">
+                  <button
+                    class="overlay-toggle-btn mobile-only"
+                    onclick="toggleMobileOverlay(this)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="toggle-icon"
+                    >
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <div class="overlay-content-wrapper">
+                    <div class="overlay-header">
+                      <div class="overlay-avatar">A</div>
+                      <span class="overlay-username">João França</span>
+                    </div>
+                    <p class="overlay-description">
+                      App educacional com snippets de código e desafios diários.
+                    </p>
+                    <div class="overlay-tags">
+                      <span class="mockup-tag">React Native</span>
+                      <span class="mockup-tag">Firebase</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mockup-footer">
+                <h3 class="mockup-title">Coders Handbook</h3>
+                <div class="mockup-stats">
+                  <div class="stat-item like-button" onclick="toggleLike(this)">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+                      />
+                    </svg>
+                    <span>102</span>
+                  </div>
+                  <div class="stat-item">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    <span>501</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="carousel-arrow arrow-right"
+            id="nextBtn"
+            aria-label="Próximo Projeto"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="carousel-fade-left"></div>
+          <div class="carousel-fade-right"></div>
+          <div class="carousel-indicators" id="carouselIndicators">
+            <div class="indicator-dot" data-target="0"></div>
+            <div class="indicator-dot active" data-target="1"></div>
+            <div class="indicator-dot" data-target="2"></div>
           </div>
         </div>
       </div>
@@ -257,17 +468,6 @@
               Foque em mostrar o que você realmente sabe fazer. Nós cuidamos de
               levar o seu trabalho até quem toma decisões.
             </p>
-            <div class="card-icon">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <path
-                  d="M14 18L24 28L34 18"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
           </div>
 
           <div class="ecosystem-card company-card">
@@ -277,16 +477,6 @@
               Acabe com a triagem de centenas de PDFs genéricos. Tenha acesso a
               talentos já validados pelos projetos que entregam.
             </p>
-            <div class="card-icon">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <path
-                  d="M24 14L24 34M14 24L34 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </div>
           </div>
         </div>
       </div>

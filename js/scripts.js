@@ -81,3 +81,97 @@ function toggleMobileOverlay(button) {
   // Alterna a classe 'minimized'
   overlay.classList.toggle("minimized");
 }
+
+/* --- LÓGICA DO CARROSSEL INFINITO COM AUTOPLAY E PAUSA --- */
+const carouselStage = document.getElementById("carouselStage");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const indicators = document.querySelectorAll(".indicator-dot");
+
+// Variáveis para controlar o tempo
+let autoplayInterval;
+let resumeTimeout;
+const AUTOPLAY_SPEED = 3000; // Tempo entre trocas automáticas (3s)
+const PAUSE_DURATION = 5000; // Tempo de espera após clique (5s)
+
+if (carouselStage && prevBtn && nextBtn) {
+  // Função que atualiza as classes visuais e bolinhas
+  function updateCarouselClasses() {
+    const cards = carouselStage.querySelectorAll(".mockup-container");
+
+    // 1. Reseta classes dos cards
+    cards.forEach((card) => {
+      card.classList.remove("active-card", "side-card");
+    });
+
+    // 2. Define classes visuais (o do meio, índice 1, é o active)
+    cards[1].classList.add("active-card");
+    cards[0].classList.add("side-card");
+    cards[2].classList.add("side-card");
+
+    // 3. Atualiza as bolinhas com base no data-index do card central
+    const activeIndex = cards[1].getAttribute("data-index");
+    indicators.forEach((dot) => {
+      dot.classList.remove("active");
+      if (dot.getAttribute("data-target") === activeIndex) {
+        dot.classList.add("active");
+      }
+    });
+  }
+
+  // Ação de ir para o Próximo
+  const goToNext = () => {
+    const firstCard = carouselStage.firstElementChild;
+    carouselStage.appendChild(firstCard);
+    updateCarouselClasses();
+  };
+
+  // Ação de ir para o Anterior
+  const goToPrev = () => {
+    const lastCard = carouselStage.lastElementChild;
+    carouselStage.insertBefore(lastCard, carouselStage.firstElementChild);
+    updateCarouselClasses();
+  };
+
+  // --- LÓGICA DE AUTOPLAY ---
+
+  const startAutoplay = () => {
+    // Garante que não criamos múltiplos intervalos
+    clearInterval(autoplayInterval);
+    autoplayInterval = setInterval(goToNext, AUTOPLAY_SPEED);
+  };
+
+  const stopAutoplay = () => {
+    clearInterval(autoplayInterval);
+  };
+
+  // Função para lidar com a interação do usuário (clique)
+  const handleUserInteraction = (actionFunction) => {
+    // 1. Para o autoplay imediatamente
+    stopAutoplay();
+    // 2. Limpa qualquer timeout de retomada anterior (se o usuário clicar rápido várias vezes)
+    clearTimeout(resumeTimeout);
+
+    // 3. Executa a ação do clique (avançar ou voltar)
+    actionFunction();
+
+    // 4. Agenda o reinício do autoplay
+    resumeTimeout = setTimeout(() => {
+      startAutoplay();
+    }, PAUSE_DURATION);
+  };
+
+  // --- EVENT LISTENERS ---
+
+  nextBtn.addEventListener("click", () => {
+    handleUserInteraction(goToNext);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    handleUserInteraction(goToPrev);
+  });
+
+  // Inicia tudo
+  updateCarouselClasses();
+  startAutoplay(); // Começa a rodar sozinho ao carregar a página
+}
