@@ -175,3 +175,42 @@ if (carouselStage && prevBtn && nextBtn) {
   updateCarouselClasses();
   startAutoplay(); // Começa a rodar sozinho ao carregar a página
 }
+
+/* ========================================= */
+/* FAQ ACCORDION LOGIC */
+/* ========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const faqQuestions = document.querySelectorAll(".faq-question");
+
+  faqQuestions.forEach((question) => {
+    question.addEventListener("click", () => {
+      const faqItem = question.parentElement;
+      const answer = question.nextElementSibling;
+      const isExpanded = question.getAttribute("aria-expanded") === "true";
+
+      // 1. Fecha todos os outros itens primeiro (opcional, mas recomendado para UX)
+      document.querySelectorAll(".faq-question").forEach((otherQuestion) => {
+        if (otherQuestion !== question) {
+          otherQuestion.setAttribute("aria-expanded", "false");
+          otherQuestion.parentElement.classList.remove("active");
+          otherQuestion.nextElementSibling.style.maxHeight = null;
+        }
+      });
+
+      // 2. Alterna o estado do item atual
+      if (isExpanded) {
+        // Fechar
+        question.setAttribute("aria-expanded", "false");
+        faqItem.classList.remove("active");
+        answer.style.maxHeight = null;
+      } else {
+        // Abrir
+        question.setAttribute("aria-expanded", "true");
+        faqItem.classList.add("active");
+        // Define a altura máxima com base no conteúdo real (scrollHeight)
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+    });
+  });
+});
