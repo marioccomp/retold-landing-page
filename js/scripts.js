@@ -74,13 +74,13 @@ function toggleLike(element) {
   }
 }
 
-// --- NOVA FUNÇÃO PARA O TOGGLE DA DESCRIÇÃO ---
-function toggleMobileOverlay(button) {
-  // Encontra o elemento pai com a classe .mockup-overlay
-  const overlay = button.closest(".mockup-overlay");
-  // Alterna a classe 'minimized'
-  overlay.classList.toggle("minimized");
-}
+// // --- NOVA FUNÇÃO PARA O TOGGLE DA DESCRIÇÃO ---
+// function toggleMobileOverlay(button) {
+//   // Encontra o elemento pai com a classe .mockup-overlay
+//   const overlay = button.closest(".mockup-overlay");
+//   // Alterna a classe 'minimized'
+//   overlay.classList.toggle("minimized");
+// }
 
 /* --- LÓGICA DO CARROSSEL INFINITO COM AUTOPLAY E PAUSA --- */
 const carouselStage = document.getElementById("carouselStage");
@@ -91,8 +91,8 @@ const indicators = document.querySelectorAll(".indicator-dot");
 // Variáveis para controlar o tempo
 let autoplayInterval;
 let resumeTimeout;
-const AUTOPLAY_SPEED = 4000; // Tempo entre trocas automáticas (3s)
-const PAUSE_DURATION = 5000; // Tempo de espera após clique (5s)
+const AUTOPLAY_SPEED = 9000; // Tempo entre trocas automáticas (3s)
+const PAUSE_DURATION = 0; // Tempo de espera após clique (5s)
 
 if (carouselStage && prevBtn && nextBtn) {
   // Função que atualiza as classes visuais e bolinhas

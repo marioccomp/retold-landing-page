@@ -188,7 +188,8 @@ header {
 
 /* Vision Section */
 .vision-section {
-  padding: 140px 48px;
+  padding: 14px 48px;
+  padding-top: 100px;
   background: var(--white);
 }
 
@@ -531,8 +532,9 @@ header {
 
 /* Ecosystem Section */
 .ecosystem-section {
-  padding: 140px 48px;
+  padding: 80px 48px;
   background: var(--light-gray);
+  padding-bottom: 100px;
 }
 
 .ecosystem-container {
@@ -766,7 +768,7 @@ footer .location {
   align-items: center;
   justify-content: center;
   perspective: 1000px;
-  transform: translateX(-80px); /* Ajuste de alinhamento Desktop */
+  transform: translateX(-10px);
 }
 
 /* O palco que segura os 3 cards */
@@ -997,12 +999,13 @@ footer .location {
 
 /* Conteúdo interno da resposta (para padding) */
 .answer-content {
-  padding: 0 24px 24px;
+  margin-top: 0.4rem;
+  padding: 0 24px 10px;
 }
 
 .answer-content p {
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 2.5;
   color: var(--body-text);
   margin: 0;
 }
