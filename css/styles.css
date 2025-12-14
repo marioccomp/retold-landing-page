@@ -452,6 +452,8 @@ header {
   align-items: center;
   gap: 20px;
   color: var(--body-text);
+  flex-shrink: 0; /* Impede que os ícones sejam esmagados pelo título */
+  margin-left: 12px; /* Garante uma margem mínima entre o texto e os ícones */
 }
 
 .stat-item {
@@ -756,6 +758,34 @@ footer .location {
   color: var(--secondary-text);
 }
 
+/* --- CONTATO FOOTER (Minimalista) --- */
+
+.footer-contact-simple {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 48px; /* Espaço generoso antes dos créditos finais */
+}
+
+.contact-label {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  color: var(--secondary-text); /* Verde água (mais apagado) */
+  opacity: 0.7;
+}
+
+.contact-email {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--light-text); /* Branco/Claro */
+
+  /* UX: Permite selecionar o email todo com um clique, mas sem parecer botão */
+  user-select: all;
+  -webkit-user-select: all;
+}
+
 /* --- ESTILOS DO CARROSSEL (VISUAL SHOWCASE - DESKTOP) --- */
 
 /* Ajuste no container pai */
@@ -878,7 +908,7 @@ footer .location {
 /* --- BOLINHAS (INDICADORES) --- */
 .carousel-indicators {
   position: absolute;
-  bottom: 32px;
+  bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -1282,5 +1312,36 @@ footer .location {
   }
   .answer-content {
     padding: 0 20px 20px;
+  }
+
+  /* --- Ajuste do Footer do Card no Mobile --- */
+  .mockup-footer {
+    padding: 16px 20px;
+    /* Alinha os itens ao topo. Se o texto quebrar linha, os ícones ficam no topo alinhados com a 1ª linha */
+    align-items: flex-start;
+  }
+
+  .mockup-title {
+    font-size: 15px; /* Um pouquinho menor para ajudar a caber */
+    line-height: 1.4;
+
+    /* --- O SEGREDO ESTÁ AQUI --- */
+    /* Removemos o truncamento (...) */
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    display: block; /* Remove o display flex/webkit-box antigo */
+
+    /* Garante que o texto ocupe o espaço disponível mas pare antes dos ícones */
+    margin-right: 8px;
+  }
+
+  .mockup-stats {
+    flex-shrink: 0; /* PROIBIDO encolher os ícones */
+    gap: 10px;
+
+    /* Pequeno ajuste para alinhar o centro dos ícones com a primeira linha do texto */
+    margin-top: 2px;
+    margin-left: 0; /* Remove margem esquerda desnecessária */
   }
 }
