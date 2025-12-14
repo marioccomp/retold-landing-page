@@ -91,7 +91,7 @@ const indicators = document.querySelectorAll(".indicator-dot");
 // Variáveis para controlar o tempo
 let autoplayInterval;
 let resumeTimeout;
-const AUTOPLAY_SPEED = 3000; // Tempo entre trocas automáticas (3s)
+const AUTOPLAY_SPEED = 4000; // Tempo entre trocas automáticas (3s)
 const PAUSE_DURATION = 5000; // Tempo de espera após clique (5s)
 
 if (carouselStage && prevBtn && nextBtn) {

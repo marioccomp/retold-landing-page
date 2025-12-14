@@ -570,16 +570,18 @@ header {
   padding: 56px 48px;
   position: relative;
   border-radius: 8px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 2px solid rgba(21, 46, 43, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
 }
 
 .ecosystem-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
+  border-color: var(--vibrant-green);
+  box-shadow: 0 16px 48px rgba(5, 220, 127, 0.15);
 }
 
 .dev-card {
   background: var(--white);
-  border: 1px solid rgba(21, 46, 43, 0.1);
 }
 
 .dev-card:hover {
@@ -588,7 +590,6 @@ header {
 
 .company-card {
   background: var(--white);
-  border: 2px solid var(--vibrant-green);
 }
 
 .company-card:hover {
