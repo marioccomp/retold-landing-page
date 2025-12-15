@@ -507,6 +507,23 @@ header {
   border-radius: 6px;
 }
 
+/* --- CORREÇÃO DESKTOP: ESTILOS BASE DO CORPO DO CARD --- */
+/* Estes estilos faltavam no CSS principal, causando o "bug" no desktop */
+
+.card-body {
+  padding: 20px 24px 12px;
+  background: var(--white);
+}
+
+.card-description {
+  font-size: 16px;
+  color: var(--body-text);
+  margin-top: 8px;
+  line-height: 1.5;
+  /* Garante que a descrição curta apareça no desktop */
+  display: block;
+}
+
 /* --- RODAPÉ DO MOCKUP (Likes/Views) --- */
 .mockup-footer {
   padding: 20px 24px;
@@ -871,7 +888,7 @@ footer .location {
   overflow: hidden;
   position: relative;
   height: auto;
-  min-height: 520px;
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1139,7 +1156,7 @@ footer .location {
 }
 
 /* ========================================= */
-/* RESPONSIVIDADE (MEDIA QUERIES)      */
+/* RESPONSIVIDADE (MEDIA QUERIES)      */
 /* ========================================= */
 
 @media (max-width: 1024px) {
@@ -1175,6 +1192,10 @@ footer .location {
   }
 }
 
+/* ========================================= */
+/* RESPONSIVIDADE (MEDIA QUERIES)            */
+/* ========================================= */
+
 @media (max-width: 768px) {
   /* --- REGRAS GERAIS MOBILE --- */
   header {
@@ -1196,7 +1217,7 @@ footer .location {
 
   /* AUMENTAMOS A ALTURA AQUI PARA CABER OS ITENS */
   .vision-visual {
-    height: 460px; /* Aumentado de 360px para 460px */
+    height: 460px;
   }
 
   .vision-section {
@@ -1210,11 +1231,10 @@ footer .location {
   .bureaucracy-box {
     flex-direction: column;
     padding: 20px;
-    gap: 10px; /* Reduzi um pouco o gap para ficarem mais juntos */
+    gap: 10px;
   }
 
   .generic-resume-doc {
-    /* Mudei o translate para não subir tanto */
     transform: rotate(-3deg) translateY(10px);
     width: 160px;
     height: 200px;
@@ -1222,13 +1242,10 @@ footer .location {
   }
 
   .file-window {
-    /* Mudei o translate para não descer tanto e evitar cortes */
     transform: rotate(2deg) translateY(-10px);
     width: 200px;
-    /* Garante que a altura da janela seja respeitada */
     height: 200px;
     z-index: 2;
-    /* Sombra mais forte para destacar a sobreposição */
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
   }
 
@@ -1263,9 +1280,11 @@ footer .location {
     height: auto;
     display: flex;
     flex-direction: column;
+    /* Importante: remove borda pois o conteudo continua abaixo */
+    border-bottom: none;
   }
   .mockup-bg-image {
-    height: 240px;
+    height: 200px; /* Ajustei altura da imagem */
     width: 100%;
     object-fit: cover;
     object-position: top center;
@@ -1275,23 +1294,27 @@ footer .location {
     position: relative;
     opacity: 1;
     visibility: visible;
-    background: rgba(21, 46, 43, 0.92);
-    padding: 24px;
+    background: rgba(21, 46, 43, 0.95);
+    padding: 20px;
     height: auto;
-    min-height: 56px;
     top: auto;
     left: auto;
-    transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-      min-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-      height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: none;
   }
   .overlay-content-wrapper {
-    max-height: 200px;
+    max-height: none;
     opacity: 1;
-    overflow: hidden;
+    overflow: visible;
     margin-top: 0;
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 0.3s ease 0.1s;
+  }
+
+  .overlay-description {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .overlay-header {
+    margin-bottom: 16px;
   }
 
   /* CARROSSEL MOBILE */
@@ -1300,28 +1323,75 @@ footer .location {
     padding: 40px 0;
     overflow: hidden;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Alinhamento no topo */
     justify-content: center;
     transform: none;
     perspective: 1000px;
   }
   .carousel-stage {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    gap: 7px;
+    gap: 12px;
     width: 100%;
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   }
+
+  /* --- AQUI AUMENTAMOS A LARGURA E PREPARAMOS O LAYOUT --- */
   .carousel-stage .mockup-container {
-    width: 70vw;
+    width: 72vw; /* Aumentado de 70vw para 85vw */
     flex-shrink: 0;
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
+
+    /* Necessário para posicionar o footer (stats) de forma absoluta dentro dele */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto;
   }
+
+  /* --- RODAPÉ COM OS LIKES/VIEWS (POSICIONADO NA DIREITA) --- */
+  .mockup-footer {
+    position: absolute; /* Tira do fluxo normal */
+    bottom: 0; /* Cola no fundo */
+    right: 0; /* Cola na direita */
+    width: auto;
+    background: transparent;
+    border: none;
+    padding: 16px 20px;
+    z-index: 5;
+  }
+
+  .mockup-stats {
+    gap: 15px; /* Espaço entre o coração e o olho */
+  }
+
+  /* --- CORPO DO CARD (ONDE FICA O TÍTULO) --- */
+  .card-body {
+    padding: 16px 20px;
+    /* Damos uma margem na direita (padding) para o texto não ficar em cima dos stats */
+    padding-right: 130px;
+    min-height: 60px; /* Altura mínima para garantir que os stats caibam */
+    display: flex;
+    align-items: center;
+  }
+
+  .mockup-title {
+    font-size: 18px;
+    line-height: 1.2;
+    white-space: normal;
+    margin: 0;
+  }
+
+  .card-description {
+    display: none;
+  }
+
+  /* Setas */
   .carousel-arrow {
     display: flex;
     position: absolute;
-    top: 50%;
+    top: 40%; /* Ajuste vertical para alinhar com a imagem */
     transform: translateY(-50%);
     z-index: 50;
     width: 40px;
@@ -1329,23 +1399,24 @@ footer .location {
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(21, 46, 43, 0.1);
     box-shadow: 0 4px 12px rgba(21, 46, 43, 0.1);
+    border-radius: 50%;
   }
   .arrow-left {
-    left: 8px;
+    left: 4px; /* Desgrudado da borda */
   }
   .arrow-right {
-    right: 8px;
+    right: 4px; /* Desgrudado da borda */
   }
 
   .active-card {
     transform: scale(1);
     opacity: 1;
     z-index: 10;
-    box-shadow: 0 20px 50px rgba(21, 46, 43, 0.15);
+    box-shadow: 0 10px 30px rgba(21, 46, 43, 0.1);
   }
   .side-card {
     transform: scale(0.95);
-    opacity: 0.5;
+    opacity: 0.6;
     filter: none;
     pointer-events: none;
   }
@@ -1363,24 +1434,5 @@ footer .location {
   }
   .answer-content {
     padding: 0 20px 20px;
-  }
-  .mockup-footer {
-    padding: 16px 20px;
-    align-items: flex-start;
-  }
-  .mockup-title {
-    font-size: 15px;
-    line-height: 1.4;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: clip;
-    display: block;
-    margin-right: 8px;
-  }
-  .mockup-stats {
-    flex-shrink: 0;
-    gap: 10px;
-    margin-top: 2px;
-    margin-left: 0;
   }
 }
